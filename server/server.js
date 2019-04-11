@@ -52,13 +52,25 @@ app.get("/", (req, res, next) => {
     res.status(200).redirect("/login");
 });
 
+app.get("/auth", (req, res, next) => {
+    if (req.session.user == 'authenticated') {
+        res.status(200).json({
+            authenticated: true
+        });
+    } else {
+        res.status(403).json({
+            authenticated: false
+        })
+    }
+});
+
 app
     .get("/login", sessionChecker, (req, res, next) => {
         res.send(200).send("login/");
     })
     .post("/login", sessionChecker, (req, res, next) => {
         if (typeof req.body.username != 'undefined' && typeof req.body.password != 'undefined') {
-            req.session.user = "LoggedIn";
+            req.session.user = "authenticated";
             res.status(200).redirect('/dashboard');
 
         } else {
@@ -70,7 +82,7 @@ app
     });
 
 app.get("/apollo", (req, res, next) => {
-    if (req.session.user && req.cookies.user_sid) {
+    if (req.session.user == "authenticated" && req.cookies.user_sid) {
         res.status(200).send("dashboard/");
     } else {
         res.redirect('/login');
