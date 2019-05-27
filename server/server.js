@@ -60,7 +60,7 @@ app.get("/auth", (req, res, next) => {
     } else {
         res.status(403).json({
             authenticated: false
-        })
+        });
     }
 });
 
@@ -70,6 +70,7 @@ app
     })
     .post("/login", sessionChecker, (req, res, next) => {
         if (typeof req.body.username != 'undefined' && typeof req.body.password != 'undefined') {
+            // Check database here for password and username in order to properly authenticate
             req.session.user = "authenticated";
             res.status(200).redirect('/dashboard');
 
