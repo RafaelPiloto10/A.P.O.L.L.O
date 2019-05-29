@@ -6,17 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>A.P.O.L.L.O | Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="./scripts/index.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/main.css">
 </head>
 
 <body>
-    <div>
-        <h1>Dashboard</h1>
-        <a href="/login">Login</a>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-3 text-center">Dashboard</h1>
+            <p class="lead text-center">A.P.O.L.L.O Assistant</p>
+            <hr class="my-2">
+            <p class="lead text-center">
+                <!-- Testing purposes - Remove later -->
+                <a class="btn btn-primary btn-lg" href="/login" role="button">Login</a>
+                <a class="btn btn-primary btn-lg" href="/logout" role="button">Logout</a>
+            </p>
+
+            <img class="img-center" id="mic" src="./assets/mic_idle.png" alt="">
+
+        </div>
     </div>
-    <div>
-        <a href="/logout">Logout</a>
-    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
+    <script src="./scripts/Jarvis.js"></script>
+    <script src="./scripts/index.js"></script>
+
 
 </body>
 

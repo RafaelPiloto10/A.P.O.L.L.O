@@ -5,3 +5,5 @@
 ## Installation:
 
 ## TODO:
+- [ ] Style the Login Page
+- [x] Style the Dashboard page

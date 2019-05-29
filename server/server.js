@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const cors = require('cors');
+const cors = require('cors'); // Unused import
 const bodyparser = require('body-parser');
 const cookieparser = require('cookie-parser');
 const session = require('express-session');
