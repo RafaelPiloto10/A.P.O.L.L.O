@@ -2,11 +2,11 @@
   "name": "apollo-api",
   "version": "0.0.1",
   "description": "APOLLO Server-Side API",
-  "main": "server.js",
+  "main": "./server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node ./server/server.js",
+    "dev": "nodemon ./server/erver.js"
   },
   "keywords": [
     "AI",

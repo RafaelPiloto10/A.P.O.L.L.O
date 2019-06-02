@@ -7,6 +7,7 @@ const session = require('express-session');
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Use middleweare
 app.use(express.json());
 app.use(bodyparser.json());
 app.use(cookieparser());
@@ -16,8 +17,10 @@ app.use(bodyparser.urlencoded({
     extended: true
 }));
 
+// Site is static
 app.use(express.static(path.join(__dirname + "/../client/")));
 
+// session middleware - sets cookie
 app.use(session({
     key: 'user_sid',
     secret: 'somerandonstuffs',
@@ -48,10 +51,12 @@ var sessionChecker = (req, res, next) => {
     }
 };
 
+// home route
 app.get("/", (req, res, next) => {
     res.status(200).redirect("/login");
 });
 
+// route to check if user is authenticated
 app.get("/auth", (req, res, next) => {
     if (req.session.user == 'authenticated') {
         res.status(200).json({
@@ -64,6 +69,7 @@ app.get("/auth", (req, res, next) => {
     }
 });
 
+// route for login
 app
     .get("/login", sessionChecker, (req, res, next) => {
         res.send(200).send("login/");
@@ -82,6 +88,7 @@ app
         }
     });
 
+// route for dashboard (APOLLO)
 app.get("/apollo", (req, res, next) => {
     if (req.session.user == "authenticated" && req.cookies.user_sid) {
         res.status(200).send("dashboard/");
@@ -100,12 +107,14 @@ app.get('/logout', (req, res) => {
     }
 });
 
+// route for 404 error
 app.get("*", (req, res, next) => {
     res.status(404).json({
         message: "Page not found"
     });
 });
 
+// run server
 app.listen(port, () => {
     console.log("Server is up and running on port " + port);
 });
