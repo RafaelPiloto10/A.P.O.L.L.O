@@ -1,4 +1,4 @@
-class Jarvis {
+class Apollo {
     static toggleMic() {
         let imgURl = document.getElementById("mic").src;
         if (imgURl.includes("active")) {
