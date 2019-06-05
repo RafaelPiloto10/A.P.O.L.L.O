@@ -9,6 +9,6 @@ Coming Soon!
 Coming Soon!
 
 ## Senior Seminar:
-[Senior Seminar Folder](senior-seminar/README.md);
+[Senior Seminar Folder](senior-seminar/)
 
 ## TODO:
