@@ -1,9 +1,14 @@
 # A.P.O.L.L.O (A Pretty Original Lovely Looking Object)
 
-## Functionality:
+## Description:
+Coming Soon!
 
+## Functionality:
+Coming Soon!
 ## Installation:
+Coming Soon!
+
+## Senior Seminar:
+[Senior Seminar Folder](senior-seminar/README.md);
 
 ## TODO:
-- [ ] Style the Login Page
-- [x] Style the Dashboard page
