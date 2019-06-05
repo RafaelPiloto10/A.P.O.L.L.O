@@ -13,6 +13,6 @@ function setup() {
 
 function keyPressed() {
     if (keyCode == UP_ARROW) {
-        Jarvis.toggleMic();
+        Apollo.toggleMic();
     }
 }

@@ -3,6 +3,8 @@ My journal enteries and screenshots for Senior Seminar
 
 # Screen Shots
 - [Starting Work Flow Tree](screenshots/tree_06_03_2019.png)
+- [First Login Page](screenshots/FirstLoginPage.png)
+- [First Dashboard Page](screenshots/FirstDashBoardPage.png)
 
 # Journal Entries
  - [June 3rd, 2019](journal/06_03_19.md)
