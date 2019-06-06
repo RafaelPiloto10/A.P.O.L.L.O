@@ -7,6 +7,13 @@ const session = require('express-session');
 const app = express();
 const port = process.env.PORT || 3000;
 
+// run server
+const route = app.listen(port, () => {
+    console.log("Server is up and running on port " + port);
+});
+
+const io = require('socket.io')(route);
+
 // Use middleweare
 app.use(express.json());
 app.use(bodyparser.json());
@@ -114,7 +121,10 @@ app.get("*", (req, res, next) => {
     });
 });
 
-// run server
-app.listen(port, () => {
-    console.log("Server is up and running on port " + port);
+io.sockets.on('connection', (socket) => {
+    console.log("New socket connection: " + socket.id);
+
+    socket.on('disconnect', () => {
+        console.log("New socket disconnected: " + socket.id)
+    });
 });
