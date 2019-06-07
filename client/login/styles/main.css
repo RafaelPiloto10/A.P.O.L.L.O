@@ -1,0 +1,14 @@
+.form-group {
+    font-size: 3rem;
+
+}
+
+.form-control {
+    height: 5rem;
+    font-size: 2rem;
+}
+
+.btn {
+    width: 75%;
+    font-size: 2rem;
+}

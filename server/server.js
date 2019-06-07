@@ -98,7 +98,7 @@ app
 // route for dashboard (APOLLO)
 app.get("/apollo", (req, res, next) => {
     if (req.session.user == "authenticated" && req.cookies.user_sid) {
-        res.status(200).send("dashboard/");
+        res.status(200).redirect('/dashboard');
     } else {
         res.redirect('/login');
     }

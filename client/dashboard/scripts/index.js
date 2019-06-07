@@ -5,6 +5,7 @@ window.onload = () => {
             window.location.replace("/login");
         }
     });
+    Apollo.speak(""); // Buffer speak to get rid of female voice
 }
 
 function setup() {
@@ -12,7 +13,5 @@ function setup() {
 }
 
 function keyPressed() {
-    if (keyCode == UP_ARROW) {
-        Apollo.toggleMic();
-    }
+    if (keyCode == UP_ARROW) {}
 }
