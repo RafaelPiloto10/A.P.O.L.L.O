@@ -1,4 +1,5 @@
 let server = "http://localhost:3000";
+var isListening = true;
 window.onload = () => {
     fetch(server + "/auth").then(response => response.json()).then(response => {
         if (!response.authenticated) {
@@ -13,5 +14,10 @@ function setup() {
 }
 
 function keyPressed() {
-    if (keyCode == UP_ARROW) {}
+    if (keyCode == UP_ARROW) {
+        recognition.start();
+    }
+    if (keyCode == DOWN_ARROW) {
+        recognition.stop();
+    }
 }
