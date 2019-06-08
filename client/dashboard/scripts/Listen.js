@@ -68,7 +68,7 @@ recognition.onresult = function (event) {
 }
 recognition.onspeechend = function (event) {
     console.log("Speech ended");
-    TextAnalysis.processCommand(finalTranscript);
+    TextAnalysis.parseCommand(finalTranscript);
 
     finalTranscript = "";
     recogText.innerHTML = "";

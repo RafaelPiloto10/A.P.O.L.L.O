@@ -13,14 +13,14 @@ Coming Soon!
 
 ## TODO:
 - [x] Implement [Socket.IO](https://socket.io/)
-- [ ] Implement YouTube API
+- [x] Implement YouTube API
 - [ ] Implement Wikipedia API
 - [ ] Implement Google Search
 - [ ] Implement [OpenWeatherMap](https://openweathermap.org/) API
-- [ ] Implement Reminder functionality
+- [ ] Implement [Nodemailer](https://nodemailer.com/about/) Library
+- [ ] Implement [IP Search](https://www.ipify.org/) for security
 - [ ] Implement Google Maps Search
 - [ ] Implement Timer functionality
 - [ ] Implement [Google Translate Search](https://developers.google.com/admin-sdk/directory/v1/languages)
-- [ ] Implement [Nodemailer](https://nodemailer.com/about/) Library
-- [ ] Implement [IP Search](https://www.ipify.org/) for security
+- [ ] Implement Reminder functionality
 - [More ideas for future implementation](https://fossbytes.com/useful-google-assistant-voice-commands/)

@@ -6,6 +6,11 @@ const cookieparser = require('cookie-parser');
 const session = require('express-session');
 const app = express();
 const port = process.env.PORT || 3000;
+require('dotenv').config();
+
+const {
+    searchYoutube
+} = require("./api_scripts/youtube");
 
 // run server
 const route = app.listen(port, () => {
@@ -123,6 +128,15 @@ app.get("*", (req, res, next) => {
 
 io.sockets.on('connection', (socket) => {
     console.log("New socket connection: " + socket.id);
+
+    socket.on("youtubeSearch", async (topic) => {
+        // console.log("Client:", socket.id, "is searching youtube for:", topic);
+        // console.log("Youtube Key:", process.env.YOUTUBEKEY);
+        await searchYoutube(process.env.YOUTUBEKEY, topic).then(data => {
+            // console.log("Got results:", data[0]);
+            socket.emit("youtubeSearchResults", data[0].id.videoId);
+        });
+    });
 
     socket.on('disconnect', () => {
         console.log("New socket disconnected: " + socket.id)
