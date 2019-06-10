@@ -14,8 +14,8 @@ Coming Soon!
 ## TODO:
 - [x] Implement [Socket.IO](https://socket.io/)
 - [x] Implement YouTube API
-- [ ] Implement Wikipedia API
-- [ ] Implement Google Search
+- [x] Implement Wikipedia API
+- [x] Implement Google Search
 - [ ] Implement [OpenWeatherMap](https://openweathermap.org/) API
 - [ ] Implement [Nodemailer](https://nodemailer.com/about/) Library
 - [ ] Implement [IP Search](https://www.ipify.org/) for security

@@ -2,6 +2,8 @@ const {
     google
 } = require('googleapis'); // Load google api
 
+const GoogleURL = "https://google.com/search?q=";
+
 async function searchYoutube(key, topic) {
     console.log("YoutubeKey:", key);
     let YouTubeAPI = google.youtube({ // Authenticate Youtube API
@@ -21,6 +23,14 @@ async function searchYoutube(key, topic) {
     });
 }
 
+function searchGoogle(topic) {
+
+    let searchQuery = topic.replace(" ", "+").replace("'", "%27").replace("!", "%21").replace("?", "%3F");
+    console.log("Searching Google:", topic);
+    return GoogleURL + searchQuery;
+}
+
 module.exports = {
-    searchYoutube: searchYoutube
+    searchYoutube: searchYoutube,
+    searchGoogle: searchGoogle
 }

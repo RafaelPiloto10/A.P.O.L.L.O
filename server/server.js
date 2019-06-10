@@ -9,8 +9,13 @@ const port = process.env.PORT || 3000;
 require('dotenv').config();
 
 const {
-    searchYoutube
-} = require("./api_scripts/youtube");
+    wikiSearch
+} = require("./api_scripts/wiki");
+
+const {
+    searchYoutube,
+    searchGoogle
+} = require("./api_scripts/google");
 
 // run server
 const route = app.listen(port, () => {
@@ -137,6 +142,17 @@ io.sockets.on('connection', (socket) => {
             socket.emit("youtubeSearchResults", data[0].id.videoId);
         });
     });
+
+    socket.on("wikipediaSearch", async (topic) => {
+        await wikiSearch(topic).then(link => {
+            socket.emit("wikipediaSearchResults", link);
+        })
+    });
+
+    socket.on("googleSearch", topic => {
+        let link = searchGoogle(topic);
+        socket.emit("googleSearchResults", link);
+    })
 
     socket.on('disconnect', () => {
         console.log("New socket disconnected: " + socket.id)
