@@ -14,8 +14,9 @@ class Apollo {
     }
 
     static speak(message) {
-        console.log("Speaking:", message);
         return new Promise(resolve => {
+            console.log("Speaking:", message);
+
             let msg = new SpeechSynthesisUtterance(message);
             // AHA Moment! Voices load after window loads / first call to speak is made. Need a buffer call
             msg.voice = speechSynthesis.getVoices().find((voice) => voice.voiceURI == "Google UK English Male");
@@ -30,11 +31,15 @@ class Apollo {
             }
 
             msg.onend = function (e) {
-                console.log('Finished in ' + event.elapsedTime + ' seconds.');
+                console.log('Finished in ' + event.elapsedTime + ' ms.');
                 Apollo.toggleMic();
                 resolve();
             };
-        })
+
+            msg.onerror = function (e) {
+                console.log(e);
+            }
+        });
     }
 
     static listen() {
@@ -101,7 +106,7 @@ class Apollo {
     }
 
     static randomResponse(responses) {
-        return responses[Math.floor(Math.random() * responses.length) + 1];
+        return responses[Math.floor(Math.random() * responses.length - 1) + 1];
     }
 
 }

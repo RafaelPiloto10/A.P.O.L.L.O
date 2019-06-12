@@ -1,7 +1,7 @@
 class TextAnalysis {
 
     static parseCommand(t) {
-
+        // Wait until the listening promise has been resolved
         Promise.resolve(t).then(function (transcript) {
             try {
                 transcript = transcript.toLowerCase();
@@ -46,6 +46,25 @@ class TextAnalysis {
                         break;
                 }
                 break;
+            case "find":
+                switch (platform) {
+                    case "youtube":
+                        socket.emit("youtubeSearch", topic);
+                        break;
+
+                    case "wikipedia":
+                        socket.emit("wikipediaSearch", topic);
+                        break;
+
+                    case "google":
+                        socket.emit("googleSearch", topic);
+                        break;
+
+                    default:
+                        socket.emit("googleSearch", topic);
+                        break;
+                }
+                break;
         }
         Apollo.shouldBeListening = true;
         Apollo.listen().then(results => {
@@ -54,10 +73,33 @@ class TextAnalysis {
     }
 
     static wildCardParse(transcript) {
+        // Stop listening
         if (transcript.includes("stop listening") || transcript.includes("give me some privacy")) {
             Apollo.shouldBeListening = false;
             let response = Apollo.randomResponse(Apollo.agreementResponses);
             Apollo.speak(response);
+        }
+
+        // Get the weather
+        if (transcript.includes("weather")) {
+
+            if (transcript.includes(" in ")) { // Specified location
+                let index = transcript.split(" ").findIndex(word => word == "in");
+                let location = transcript.split(" ").slice(index + 1, transcript.length).join(" ");
+
+                if (transcript.includes("forecast")) { // Forecast
+                    socket.emit("getForecastCity", location);
+                } else { // Current weather
+                    socket.emit("getWeatherCity", location);
+                }
+
+            } else { // Use current location (Coordinates)
+                if (transcript.includes("forecast")) { // Forecast
+                    socket.emit("getForecastCoord", currentLocation.lat, currentLocation.lon);
+                } else { // Current weather
+                    socket.emit("getWeatherCoord", currentLocation.lat, currentLocation.lon);
+                }
+            }
         }
     }
 

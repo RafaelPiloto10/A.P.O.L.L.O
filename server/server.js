@@ -17,6 +17,13 @@ const {
     searchGoogle
 } = require("./api_scripts/google");
 
+const {
+    getCurrentWeatherCoord,
+    getCurrentWeatherCity,
+    getWeatherForecastCoord,
+    getWeatherForecastCity
+} = require("./api_scripts/owm");
+
 // run server
 const route = app.listen(port, () => {
     console.log("Server is up and running on port " + port);
@@ -152,7 +159,31 @@ io.sockets.on('connection', (socket) => {
     socket.on("googleSearch", topic => {
         let link = searchGoogle(topic);
         socket.emit("googleSearchResults", link);
-    })
+    });
+
+    socket.on("getWeatherCoord", async (lat, lon) => {
+        await getCurrentWeatherCoord(lat, lon).then(weather => {
+            socket.emit("weather_current", weather);
+        });
+    });
+
+    socket.on("getWeatherCity", async city => {
+        await getCurrentWeatherCity(city).then(weather => {
+            socket.emit("weather_current", weather);
+        });
+    });
+
+    socket.on("getForecastCoord", async (lat, lon) => {
+        await getWeatherForecastCoord(lat, lon, 7).then(weather => {
+            socket.emit("weather_forecast", weather);
+        });
+    });
+
+    socket.on("getForecastCity", async city => {
+        await getWeatherForecastCity(city, 7).then(weather => {
+            socket.emit("weather_forecast", weather);
+        });
+    });
 
     socket.on('disconnect', () => {
         console.log("New socket disconnected: " + socket.id)

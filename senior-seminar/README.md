@@ -13,4 +13,6 @@ My journal enteries and screenshots for Senior Seminar
  - [June 6th, 2019](journal/06_06_19.md)
  - [June 7th, 2019](journal/06_07_19.md)
  - [June 8th, 2019](journal/06_08_19.md)
+ - [June 9th, 2019](journal/06_09_19.md)
+ - [June 10th, 2019](journal/06_10_19.md)
  

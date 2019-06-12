@@ -16,7 +16,7 @@ Coming Soon!
 - [x] Implement YouTube API
 - [x] Implement Wikipedia API
 - [x] Implement Google Search
-- [ ] Implement [OpenWeatherMap](https://openweathermap.org/) API
+- [X] Implement [OpenWeatherMap](https://openweathermap.org/) API
 - [ ] Implement [Nodemailer](https://nodemailer.com/about/) Library
 - [ ] Implement [IP Search](https://www.ipify.org/) for security
 - [ ] Implement Google Maps Search

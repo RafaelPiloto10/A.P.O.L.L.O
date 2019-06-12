@@ -26,6 +26,6 @@ function keyPressed() {
         recognition.stop();
         Apollo.isListening = false;
         Apollo.shouldBeListening = false;
-        console.log("Stop listening");
+        console.log("Stopped listening");
     }
 }
