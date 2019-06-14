@@ -75,7 +75,7 @@ function sendEmail() {
                                 }
                             });
 
-                        }, 500);
+                        }, 1000);
                     });
                     console.log("Confirmation:", confirmation);
                     if (confirmation == "yes") {
@@ -94,7 +94,7 @@ function sendEmail() {
             SUBJECT = await new Promise(async resolveSubject => {
                 await Apollo.speak(Apollo.randomResponse(Apollo.subjectPrompts));
                 Apollo.shouldBeListening = true;
-                let subject = await Apollo.listen(10 * 1000);
+                let subject = await Apollo.listen();
                 let confirmedSubject = false;
                 while (!confirmedSubject) {
                     await Apollo.speak(subject + ". " + Apollo.randomResponse(Apollo.confirmPrompts));
@@ -112,7 +112,7 @@ function sendEmail() {
                                 }
                             });
 
-                        }, 500);
+                        }, 1000);
                     });
                     console.log("Confirmation:", confirmation);
                     if (confirmation == "yes") {
@@ -149,7 +149,7 @@ function sendEmail() {
                                 }
                             });
 
-                        }, 500);
+                        }, 1000);
                     });
                     console.log("Confirmation:", confirmation);
                     if (confirmation == "yes") {

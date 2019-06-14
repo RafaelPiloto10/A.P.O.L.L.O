@@ -17,7 +17,7 @@ Coming Soon!
 - [x] Implement Wikipedia API
 - [x] Implement Google Search
 - [X] Implement [OpenWeatherMap](https://openweathermap.org/) API
-- [ ] Implement [Nodemailer](https://nodemailer.com/about/) Library
+- [X] Implement [Nodemailer](https://nodemailer.com/about/) Library
 - [ ] Implement [IP Search](https://www.ipify.org/) for security
 - [ ] Implement Google Maps Search
 - [ ] Implement Timer functionality
