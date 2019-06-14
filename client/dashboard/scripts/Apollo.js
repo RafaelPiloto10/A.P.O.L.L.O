@@ -3,6 +3,10 @@ class Apollo {
     static shouldBeListening = false;
 
     static agreementResponses = ["As you wish", "Yes sir", "What ever you say", "Right away"];
+    static confirmPrompts = ["Is this correct?", "Does this seem right?", "Did I get that correct?"];
+    static toPrompts = ["Who shall I send it to?", "Who shall I send the email to?", "Who are we sending it to?"];
+    static subjectPrompts = ["What shall the subject be?", "What is the subject?", "What should I set the subject to be?"];
+    static textPrompts = ["What would you like to say?", "What shall I say?", "What is the message?"];
 
     static toggleMic() {
         let imgURl = document.getElementById("mic").src;
@@ -42,14 +46,20 @@ class Apollo {
         });
     }
 
-    static listen() {
+    static listen(timeout = 7000) {
         return new Promise(resolve => {
+            let stopTimeout;
+            if (!Apollo.isListening && !Apollo.shouldBeListening) {
+                console.warn("listen() called but shouldBeListening = false");
+            }
             if (!Apollo.isListening && Apollo.shouldBeListening) {
                 let listenLoop = setInterval(() => {
                     if (Apollo.isListening) clearInterval(listenLoop);
                     try {
                         recognition.start();
-                    } catch {}
+                    } catch (error) {
+                        console.log(error)
+                    }
 
                 }, 1000);
             } else {}
@@ -60,7 +70,7 @@ class Apollo {
 
             recognition.onresult = function (event) {
                 let interimTranscripts = "";
-                setTimeout(() => recognition.stop(), 7000);
+                stopTimeout = setTimeout(() => recognition.stop(), timeout);
                 for (let i = event.resultIndex; i < event.results.length; i++) {
                     let transcript = event.results[i][0].transcript;
                     transcript.replace("\n", "<br>");
@@ -92,6 +102,7 @@ class Apollo {
 
             recognition.onspeechend = function (event) {
                 recognition.stop();
+                clearTimeout(stopTimeout);
                 Apollo.isListening = false;
                 Apollo.shouldBeListening = false;
 
@@ -109,4 +120,11 @@ class Apollo {
         return responses[Math.floor(Math.random() * responses.length - 1) + 1];
     }
 
+
+    static ListenAndParse() {
+        Apollo.shouldBeListening = true;
+        Apollo.listen().then(results => {
+            TextAnalysis.parseCommand(results);
+        });
+    }
 }

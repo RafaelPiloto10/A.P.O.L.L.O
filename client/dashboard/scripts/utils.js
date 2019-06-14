@@ -46,3 +46,130 @@ function getForecastMessage(weather) {
         ["The overall weather for this week appears to be " + msg_descriptions + "."]
     ];
 }
+
+function sendEmail() {
+    return new Promise(async resolve => {
+        let TO, SUBJECT, TEXT;
+        // .replace(" at ", "@").replace(" dot ", ".").split(" ").join("");
+        while (TO == undefined) {
+            console.log("Sending Email: Getting To");
+            TO = await new Promise(async resolveTo => {
+                await Apollo.speak(Apollo.randomResponse(Apollo.toPrompts));
+                Apollo.shouldBeListening = true;
+                let to = await Apollo.listen(10 * 1000);
+                to = to.replace(" at ", "@").replace(" dot ", ".").split(" ").join("");
+                let confirmedTo = false;
+                while (!confirmedTo) {
+                    await Apollo.speak(to + ". " + Apollo.randomResponse(Apollo.confirmPrompts));
+
+
+                    let confirmation = await new Promise(resolve => {
+                        let listenLoop = setTimeout(async () => {
+                            Apollo.shouldBeListening = true;
+                            Apollo.isListening = false;
+                            console.log("Trying to get confirmation");
+                            await Apollo.listen().then(c => {
+                                if (c) {
+                                    clearInterval(listenLoop);
+                                    resolve(c);
+                                }
+                            });
+
+                        }, 500);
+                    });
+                    console.log("Confirmation:", confirmation);
+                    if (confirmation == "yes") {
+                        confirmedTo = true;
+                        resolveTo(to);
+                    } else if (confirmation == "no") {
+                        confirmedTo = true;
+                        resolveTo(undefined);
+                    }
+                }
+            });
+        }
+
+        while (SUBJECT == undefined) {
+            console.log("Sending Email: Getting Subject");
+            SUBJECT = await new Promise(async resolveSubject => {
+                await Apollo.speak(Apollo.randomResponse(Apollo.subjectPrompts));
+                Apollo.shouldBeListening = true;
+                let subject = await Apollo.listen(10 * 1000);
+                let confirmedSubject = false;
+                while (!confirmedSubject) {
+                    await Apollo.speak(subject + ". " + Apollo.randomResponse(Apollo.confirmPrompts));
+
+
+                    let confirmation = await new Promise(resolve => {
+                        let listenLoop = setTimeout(async () => {
+                            Apollo.shouldBeListening = true;
+                            Apollo.isListening = false;
+                            console.log("Trying to get confirmation");
+                            await Apollo.listen().then(c => {
+                                if (c) {
+                                    clearInterval(listenLoop);
+                                    resolve(c);
+                                }
+                            });
+
+                        }, 500);
+                    });
+                    console.log("Confirmation:", confirmation);
+                    if (confirmation == "yes") {
+                        confirmedSubject = true;
+                        resolveSubject(subject);
+                    } else if (confirmation == "no") {
+                        confirmedSubject = true;
+                        resolveSubject(undefined);
+                    }
+                }
+            });
+        }
+
+        while (TEXT == undefined) {
+            console.log("Sending Email: Getting text");
+            TEXT = await new Promise(async resolveText => {
+                await Apollo.speak(Apollo.randomResponse(Apollo.textPrompts));
+                Apollo.shouldBeListening = true;
+                let text = await Apollo.listen(10 * 1000);
+                let confirmedText = false;
+                while (!confirmedText) {
+                    await Apollo.speak(text + ". " + Apollo.randomResponse(Apollo.confirmPrompts));
+
+
+                    let confirmation = await new Promise(resolve => {
+                        let listenLoop = setTimeout(async () => {
+                            Apollo.shouldBeListening = true;
+                            Apollo.isListening = false;
+                            console.log("Trying to get confirmation");
+                            await Apollo.listen().then(c => {
+                                if (c) {
+                                    clearInterval(listenLoop);
+                                    resolve(c);
+                                }
+                            });
+
+                        }, 500);
+                    });
+                    console.log("Confirmation:", confirmation);
+                    if (confirmation == "yes") {
+                        confirmedText = true;
+                        resolveText(text);
+                    } else if (confirmation == "no") {
+                        confirmedText = true;
+                        resolveText(undefined);
+                    }
+                }
+            });
+        }
+
+        console.log("Finished getting to:", TO);
+        console.log("Finished getting subject:", SUBJECT);
+        console.log("Finished getting text:", TEXT);
+        resolve({
+            to: TO,
+            subject: SUBJECT,
+            text: TEXT
+        });
+    });
+}

@@ -25,24 +25,28 @@ class TextAnalysis {
 
     }
 
-    static processCommand(command, topic, platform) {
+    static async processCommand(command, topic, platform) {
         switch (command) {
             case "search":
                 switch (platform) {
                     case "youtube":
                         socket.emit("youtubeSearch", topic);
+                        Apollo.ListenAndParse();
                         break;
 
                     case "wikipedia":
                         socket.emit("wikipediaSearch", topic);
+                        Apollo.ListenAndParse();
                         break;
 
                     case "google":
                         socket.emit("googleSearch", topic);
+                        Apollo.ListenAndParse();
                         break;
 
                     default:
                         socket.emit("googleSearch", topic);
+                        Apollo.ListenAndParse();
                         break;
                 }
                 break;
@@ -50,26 +54,36 @@ class TextAnalysis {
                 switch (platform) {
                     case "youtube":
                         socket.emit("youtubeSearch", topic);
+                        Apollo.ListenAndParse();
                         break;
 
                     case "wikipedia":
                         socket.emit("wikipediaSearch", topic);
+                        Apollo.ListenAndParse();
                         break;
 
                     case "google":
                         socket.emit("googleSearch", topic);
+                        Apollo.ListenAndParse();
                         break;
 
                     default:
                         socket.emit("googleSearch", topic);
+                        Apollo.ListenAndParse();
                         break;
                 }
                 break;
+            case "send":
+                switch (platform) {
+                    case "gmail":
+                        let email = await sendEmail();
+                        socket.emit("send_email", email);
+                        break;
+                    default:
+                        break;
+
+                }
         }
-        Apollo.shouldBeListening = true;
-        Apollo.listen().then(results => {
-            TextAnalysis.parseCommand(results);
-        });
     }
 
     static wildCardParse(transcript) {

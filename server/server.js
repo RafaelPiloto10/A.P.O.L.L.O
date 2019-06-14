@@ -24,6 +24,10 @@ const {
     getWeatherForecastCity
 } = require("./api_scripts/owm");
 
+const {
+    sendEmail
+} = require("./api_scripts/email");
+
 // run server
 const route = app.listen(port, () => {
     console.log("Server is up and running on port " + port);
@@ -183,6 +187,19 @@ io.sockets.on('connection', (socket) => {
         await getWeatherForecastCity(city, 7).then(weather => {
             socket.emit("weather_forecast", weather);
         });
+    });
+
+    socket.on('send_email', email => {
+        let status = sendEmail(email.to, email.subject, email.text);
+        if (status.code == 554)
+            socket.emit('email_sent', {
+                status: "ERROR",
+                error: status.error
+            });
+        else
+            socket.emit('email_sent', {
+                status: "OK"
+            });
     });
 
     socket.on('disconnect', () => {

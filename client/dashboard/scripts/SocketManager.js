@@ -25,10 +25,7 @@ socket.on("weather_current", weather => {
         " and a high of " + Math.floor(weather.main.temp_max) +
         ". Wind is traveling " + Math.floor(weather.wind.speed) +
         " miles per hour at " + weather.wind.deg + " degrees.").then(() => {
-        Apollo.shouldBeListening = true;
-        Apollo.listen().then(results => {
-            TextAnalysis.parseCommand(results);
-        });
+        Apollo.ListenAndParse();
     })
 });
 
@@ -38,9 +35,13 @@ socket.on("weather_forecast", weather => {
         .then(Apollo.speak(message[1][0]))
         .then(Apollo.speak(message[2][0]))
         .then(() => {
-            Apollo.shouldBeListening = true;
-            Apollo.listen().then(results => {
-                TextAnalysis.parseCommand(results);
-            });
+            Apollo.ListenAndParse();
         })
+});
+
+socket.on("email_sent", async status => {
+    console.log(status);
+    if (status.status == "ERROR") await Apollo.speak("There was an issue with sending the email");
+    else await Apollo.speak("Email sent successfully!");
+    Apollo.ListenAndParse();
 });

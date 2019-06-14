@@ -24,6 +24,7 @@
     "express-session": "^1.15.6",
     "googleapis": "^40.0.0",
     "node-fetch": "^2.6.0",
+    "node-mailer": "^0.1.1",
     "nodemon": "^1.18.11",
     "socket.io": "^2.2.0"
   }
