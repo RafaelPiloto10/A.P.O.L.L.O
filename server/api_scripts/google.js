@@ -30,7 +30,14 @@ function searchGoogle(topic) {
     return GoogleURL + searchQuery;
 }
 
+function searchGoogleMaps(location) {
+    let searchQuery = `https://www.google.com/maps/search/${location.target}/@${location.lat},${location.lon}z`
+    console.log("Searching Google Maps:", location.target);
+    return searchQuery;
+}
+
 module.exports = {
-    searchYoutube: searchYoutube,
-    searchGoogle: searchGoogle
+    searchYoutube,
+    searchGoogle,
+    searchGoogleMaps
 }

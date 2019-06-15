@@ -18,8 +18,8 @@ Coming Soon!
 - [x] Implement Google Search
 - [X] Implement [OpenWeatherMap](https://openweathermap.org/) API
 - [X] Implement [Nodemailer](https://nodemailer.com/about/) Library
-- [ ] Implement [IP Search](https://www.ipify.org/) for security
-- [ ] Implement Google Maps Search
+- [X] Implement [IP Search](https://ipapi.co/) for security
+- [X] Implement Google Maps Search
 - [ ] Implement Timer functionality
 - [ ] Implement [Google Translate Search](https://developers.google.com/admin-sdk/directory/v1/languages)
 - [ ] Implement Reminder functionality

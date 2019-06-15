@@ -14,7 +14,8 @@ const {
 
 const {
     searchYoutube,
-    searchGoogle
+    searchGoogle,
+    searchGoogleMaps
 } = require("./api_scripts/google");
 
 const {
@@ -145,45 +146,45 @@ app.get("*", (req, res, next) => {
 io.sockets.on('connection', (socket) => {
     console.log("New socket connection: " + socket.id);
 
-    socket.on("youtubeSearch", async (topic) => {
+    socket.on("youtube_Search", async (topic) => {
         // console.log("Client:", socket.id, "is searching youtube for:", topic);
         // console.log("Youtube Key:", process.env.YOUTUBEKEY);
         await searchYoutube(process.env.YOUTUBEKEY, topic).then(data => {
             // console.log("Got results:", data[0]);
-            socket.emit("youtubeSearchResults", data[0].id.videoId);
+            socket.emit("youtube_Search_Results", data[0].id.videoId);
         });
     });
 
-    socket.on("wikipediaSearch", async (topic) => {
+    socket.on("wikipedia_Search", async (topic) => {
         await wikiSearch(topic).then(link => {
-            socket.emit("wikipediaSearchResults", link);
+            socket.emit("wikipedia_Search_Results", link);
         })
     });
 
-    socket.on("googleSearch", topic => {
+    socket.on("google_Search", topic => {
         let link = searchGoogle(topic);
-        socket.emit("googleSearchResults", link);
+        socket.emit("google_Search_Results", link);
     });
 
-    socket.on("getWeatherCoord", async (lat, lon) => {
+    socket.on("get_Weather_Coord", async (lat, lon) => {
         await getCurrentWeatherCoord(lat, lon).then(weather => {
             socket.emit("weather_current", weather);
         });
     });
 
-    socket.on("getWeatherCity", async city => {
+    socket.on("get_Weather_City", async city => {
         await getCurrentWeatherCity(city).then(weather => {
             socket.emit("weather_current", weather);
         });
     });
 
-    socket.on("getForecastCoord", async (lat, lon) => {
+    socket.on("get_Forecast_Coord", async (lat, lon) => {
         await getWeatherForecastCoord(lat, lon, 7).then(weather => {
             socket.emit("weather_forecast", weather);
         });
     });
 
-    socket.on("getForecastCity", async city => {
+    socket.on("get_Forecast_City", async city => {
         await getWeatherForecastCity(city, 7).then(weather => {
             socket.emit("weather_forecast", weather);
         });
@@ -200,6 +201,19 @@ io.sockets.on('connection', (socket) => {
             socket.emit('email_sent', {
                 status: "OK"
             });
+    });
+
+    socket.on("new_user_info", info => { // Uncomment in production - disabled while in dev
+        if (process.env.NODE_ENV != "DEV") {
+            sendEmail(process.env.EMAIL, `New User Connected from ${info.city}, ${info.region_code}`, JSON.stringify(info).split(",").join("\n"));
+        } else {
+            console.log("New user:", JSON.stringify(info));
+        }
+    });
+
+    socket.on("google_Maps_Search", location => {
+        let link = searchGoogleMaps(location);
+        socket.emit("google_maps_search_results", link);
     });
 
     socket.on('disconnect', () => {

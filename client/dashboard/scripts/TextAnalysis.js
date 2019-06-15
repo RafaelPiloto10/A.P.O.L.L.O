@@ -14,7 +14,7 @@ class TextAnalysis {
                 let topic = results.groups["topic"];
                 let platform = results.groups["platform"].split(" ").pop();
 
-                // console.log(command, topic, platform);
+                console.log(command, topic, platform);
                 TextAnalysis.processCommand(command, topic, platform);
             } catch (error) {
                 // console.log(error, transcript);
@@ -30,22 +30,22 @@ class TextAnalysis {
             case "search":
                 switch (platform) {
                     case "youtube":
-                        socket.emit("youtubeSearch", topic);
+                        socket.emit("youtube_Search", topic);
                         Apollo.ListenAndParse();
                         break;
 
                     case "wikipedia":
-                        socket.emit("wikipediaSearch", topic);
+                        socket.emit("wikipedia_Search", topic);
                         Apollo.ListenAndParse();
                         break;
 
                     case "google":
-                        socket.emit("googleSearch", topic);
+                        socket.emit("google_Search", topic);
                         Apollo.ListenAndParse();
                         break;
 
                     default:
-                        socket.emit("googleSearch", topic);
+                        socket.emit("google_Search", topic);
                         Apollo.ListenAndParse();
                         break;
                 }
@@ -53,22 +53,31 @@ class TextAnalysis {
             case "find":
                 switch (platform) {
                     case "youtube":
-                        socket.emit("youtubeSearch", topic);
+                        socket.emit("youtube_Search", topic);
                         Apollo.ListenAndParse();
                         break;
 
                     case "wikipedia":
-                        socket.emit("wikipediaSearch", topic);
+                        socket.emit("wikipedia_Search", topic);
                         Apollo.ListenAndParse();
                         break;
 
                     case "google":
-                        socket.emit("googleSearch", topic);
+                        socket.emit("google_Search", topic);
+                        Apollo.ListenAndParse();
+                        break;
+
+                    case "maps":
+                        socket.emit("google_Maps_Search", {
+                            lat: currentLocation.lat,
+                            lon: currentLocation.lon,
+                            target: topic
+                        });
                         Apollo.ListenAndParse();
                         break;
 
                     default:
-                        socket.emit("googleSearch", topic);
+                        socket.emit("google_Search", topic);
                         Apollo.ListenAndParse();
                         break;
                 }
@@ -102,16 +111,16 @@ class TextAnalysis {
                 let location = transcript.split(" ").slice(index + 1, transcript.length).join(" ");
 
                 if (transcript.includes("forecast")) { // Forecast
-                    socket.emit("getForecastCity", location);
+                    socket.emit("get_Forecast_City", location);
                 } else { // Current weather
-                    socket.emit("getWeatherCity", location);
+                    socket.emit("get_Weather_City", location);
                 }
 
             } else { // Use current location (Coordinates)
                 if (transcript.includes("forecast")) { // Forecast
-                    socket.emit("getForecastCoord", currentLocation.lat, currentLocation.lon);
+                    socket.emit("get_Forecast_Coord", currentLocation.lat, currentLocation.lon);
                 } else { // Current weather
-                    socket.emit("getWeatherCoord", currentLocation.lat, currentLocation.lon);
+                    socket.emit("get_Weather_Coord", currentLocation.lat, currentLocation.lon);
                 }
             }
         }
