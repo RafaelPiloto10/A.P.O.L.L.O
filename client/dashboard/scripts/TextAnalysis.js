@@ -126,9 +126,30 @@ class TextAnalysis {
         }
 
         if (transcript.includes("timer")) {
-            let pattern = /([0-9]+)([a-z]+)/;
+            let pattern = /[0-9]+ [a-z]+(( and |, |\s)[0-9]+ [a-z]+)*/;
             let time = timer.match(pattern)[0];
             socket.emit("set_timer", time);
+
+        }
+
+        if (transcript.includes("reminder")) {
+            let pattern1 = /(?<reason>to .+)(?<time>(on|every|after|before|at|of|in) .+)/;
+            let pattern2 = /(?<time>(on|every|after|before|at|of|in) .+)(?<reason>to .+)/;
+            let match1 = transcript.match(pattern1);
+            let match2 = transcript.match(pattern2);
+
+            let reason = match1.groups.reason || match2.groups.reason;
+            let time = match1.groups.time || match2.groups.time;
+
+            console.log(transcript);
+            console.log("time:", time);
+            console.log("reason:", reason);
+            if (reason && time) {
+                socket.emit("set_reminder", time, reason);
+                Apollo.speak("Reminder set").then(() => {
+                    Apollo.ListenAndParse();
+                });
+            } else Apollo.speak("Could not parse your reminder").then(() => Apollo.ListenAndParse());
 
         }
     }

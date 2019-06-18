@@ -11,7 +11,7 @@
   "keywords": [
     "AI",
     "Personal",
-    "Assitant"
+    "Assistant"
   ],
   "author": "Rafael Piloto (rafaelpiloto10.now.sh)",
   "license": "ISC",
@@ -23,6 +23,7 @@
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "googleapis": "^40.0.0",
+    "later": "^1.2.0",
     "node-fetch": "^2.6.0",
     "node-mailer": "^0.1.1",
     "nodemon": "^1.18.11",

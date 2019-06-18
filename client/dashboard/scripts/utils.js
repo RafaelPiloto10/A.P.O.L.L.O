@@ -173,3 +173,8 @@ function sendEmail() {
         });
     });
 }
+
+function openLink(link) {
+    let new_window = window.open(link, "_blank");
+    if (!new_window) alert("Your browser has blocked opening a new tab for a service you have requested");
+}

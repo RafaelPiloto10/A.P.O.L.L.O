@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.0.0",
+    "googleapis": "^40.0.0",
     "spotify-web-api-node": "^4.0.0"
   }
 }

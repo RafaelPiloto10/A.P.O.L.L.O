@@ -30,6 +30,8 @@ const {
     sendEmail
 } = require("./api_scripts/email");
 
+const later = require('later');
+
 // run server
 const route = app.listen(port, () => {
     console.log("Server is up and running on port " + port);
@@ -150,7 +152,7 @@ io.sockets.on('connection', (socket) => {
     socket.on("youtube_Search", async (topic) => {
         // console.log("Client:", socket.id, "is searching youtube for:", topic);
         // console.log("Youtube Key:", process.env.YOUTUBEKEY);
-        await searchYoutube(process.env.YOUTUBEKEY, topic).then(data => {
+        await searchYoutube(process.env.GOOGLEKEY, topic).then(data => {
             // console.log("Got results:", data[0]);
             socket.emit("youtube_Search_Results", data[0].id.videoId);
         });
@@ -221,6 +223,22 @@ io.sockets.on('connection', (socket) => {
         let link = setGoogleTimer(time);
         socket.emit("google_timer", link);
     });
+
+    socket.on("set_reminder", (time, reminder) => {
+        console.log("Setting a reminder:", time, reminder);
+
+        function send_reminder() {
+            socket.emit("reminder_met", reminder);
+        }
+        try {
+            let timer = later.parse.text(time);
+            later.setTimeout(send_reminder, timer);
+        } catch (error) {
+            socket.emit("custom_error", "Reminder Error: " + error);
+        }
+    });
+
+
 
     socket.on('disconnect', () => {
         console.log("New socket disconnected: " + socket.id)

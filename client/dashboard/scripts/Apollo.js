@@ -38,11 +38,21 @@ class Apollo {
                 console.log('Finished in ' + event.elapsedTime + ' ms.');
                 Apollo.toggleMic();
                 resolve();
-            };
+            }
 
             msg.onerror = function (e) {
                 console.log(e);
             }
+
+            msg.onpause = function (e) {
+                Apollo.toggleMic();
+                msg.resume();
+            }
+
+            msg.onresume = function (e) {
+                Apollo.toggleMic();
+            }
+
         });
     }
 

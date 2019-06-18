@@ -21,7 +21,7 @@ Coming Soon!
 - [X] Implement [IP Search](https://ipapi.co/) for security
 - [X] Implement Google Maps Search
 - [x] Implement Timer functionality
-- [ ] Implement Reminder functionality
-- [ ] Implement Spotify Mood Player
+- [X] Implement [Reminder](https://bunkat.github.io/later/index.html) functionality (+10 seconds only)
 - [ ] Implement [Google Translate Search](https://developers.google.com/admin-sdk/directory/v1/languages)
+- [ ] Implement Spotify Mood Player
 - [More ideas for future implementation](https://fossbytes.com/useful-google-assistant-voice-commands/)

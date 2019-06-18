@@ -5,15 +5,15 @@ socket.on('connect', () => {
 });
 
 socket.on('youtube_Search_Results', (id) => {
-    window.open(`https://www.youtube.com/watch?v=${id}`, '_blank');
+    openLink(`https://www.youtube.com/watch?v=${id}`)
 });
 
 socket.on('wikipedia_Search_Results', link => {
-    window.open(link, "_blank");
+    openLink(link);
 });
 
 socket.on('google_Search_Results', link => {
-    window.open(link, "_blank");
+    openLink(link);
 });
 
 socket.on("weather_current", weather => {
@@ -47,9 +47,25 @@ socket.on("email_sent", async status => {
 });
 
 socket.on("google_maps_search_results", link => {
-    window.open(link, "_blank");
+    openLink(link);
 });
 
 socket.on("google_timer", link => {
-    window.open(link, "_blank");
+    openLink(link);
 });
+
+socket.on("reminder_met", reason => {
+    if (window.speechSynthesis.speaking) {
+        let waitLoop = setInterval(() => {
+            if (!window.speechSynthesis.speaking) {
+                clearInterval(waitLoop);
+            }
+        }, 2000);
+    }
+
+    Apollo.speak("Time " + reason);
+});
+
+socket.on("custom_error", error => {
+    console.log(error);
+})
