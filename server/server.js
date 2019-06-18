@@ -15,7 +15,8 @@ const {
 const {
     searchYoutube,
     searchGoogle,
-    searchGoogleMaps
+    searchGoogleMaps,
+    setGoogleTimer
 } = require("./api_scripts/google");
 
 const {
@@ -214,6 +215,11 @@ io.sockets.on('connection', (socket) => {
     socket.on("google_Maps_Search", location => {
         let link = searchGoogleMaps(location);
         socket.emit("google_maps_search_results", link);
+    });
+
+    socket.on("set_timer", time => {
+        let link = setGoogleTimer(time);
+        socket.emit("google_timer", link);
     });
 
     socket.on('disconnect', () => {

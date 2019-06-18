@@ -36,8 +36,14 @@ function searchGoogleMaps(location) {
     return searchQuery;
 }
 
+function setGoogleTimer(time) {
+    return searchGoogle("timer " + time);
+
+}
+
 module.exports = {
     searchYoutube,
     searchGoogle,
-    searchGoogleMaps
+    searchGoogleMaps,
+    setGoogleTimer
 }

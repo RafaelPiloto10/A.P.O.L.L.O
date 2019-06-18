@@ -124,6 +124,12 @@ class TextAnalysis {
                 }
             }
         }
-    }
 
+        if (transcript.includes("timer")) {
+            let pattern = /([0-9]+)([a-z]+)/;
+            let time = timer.match(pattern)[0];
+            socket.emit("set_timer", time);
+
+        }
+    }
 }

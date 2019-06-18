@@ -20,7 +20,8 @@ Coming Soon!
 - [X] Implement [Nodemailer](https://nodemailer.com/about/) Library
 - [X] Implement [IP Search](https://ipapi.co/) for security
 - [X] Implement Google Maps Search
-- [ ] Implement Timer functionality
-- [ ] Implement [Google Translate Search](https://developers.google.com/admin-sdk/directory/v1/languages)
+- [x] Implement Timer functionality
 - [ ] Implement Reminder functionality
+- [ ] Implement Spotify Mood Player
+- [ ] Implement [Google Translate Search](https://developers.google.com/admin-sdk/directory/v1/languages)
 - [More ideas for future implementation](https://fossbytes.com/useful-google-assistant-voice-commands/)

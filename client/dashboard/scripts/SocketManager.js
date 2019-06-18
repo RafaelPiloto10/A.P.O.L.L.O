@@ -49,3 +49,7 @@ socket.on("email_sent", async status => {
 socket.on("google_maps_search_results", link => {
     window.open(link, "_blank");
 });
+
+socket.on("google_timer", link => {
+    window.open(link, "_blank");
+});
