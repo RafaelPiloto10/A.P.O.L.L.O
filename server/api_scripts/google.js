@@ -2,6 +2,8 @@ const {
     google
 } = require('googleapis'); // Load google api
 
+const fs = require('fs');
+
 const GoogleURL = "https://google.com/search?q=";
 
 async function searchYoutube(key, topic) {
@@ -25,7 +27,7 @@ async function searchYoutube(key, topic) {
 
 function searchGoogle(topic) {
 
-    let searchQuery = topic.replace(" ", "+").replace("'", "%27").replace("!", "%21").replace("?", "%3F");
+    let searchQuery = topic.split(" ").join("+").split("'").join("%27").split("!").join("%21").split("?").join("%3F");
     console.log("Searching Google:", topic);
     return GoogleURL + searchQuery;
 }
@@ -41,10 +43,21 @@ function setGoogleTimer(time) {
 
 }
 
+function searchGoogleTranslate(tokens, language) {
+    let contents = fs.readFileSync(require('path').resolve(__dirname, "../assets/language_codes.json"));
+    let language_codes = JSON.parse(contents);
+
+    tokens = tokens.split(" ").join("%20").split("?").join("%3F").split(",").join("%2C");
+    let link = `https://translate.google.com/#view=home&op=translate&sl=en&tl=${language_codes[language]}&text=${tokens}`;
+    console.log("Searching Google Translate:", tokens, "in", language, ",", language_codes[language]);
+    return link;
+}
+
 
 module.exports = {
     searchYoutube,
     searchGoogle,
     searchGoogleMaps,
-    setGoogleTimer
+    setGoogleTimer,
+    searchGoogleTranslate
 }

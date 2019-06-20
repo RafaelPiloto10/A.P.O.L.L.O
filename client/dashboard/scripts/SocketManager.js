@@ -66,6 +66,10 @@ socket.on("reminder_met", reason => {
     Apollo.speak("Time " + reason);
 });
 
+socket.on("translation_link", link => {
+    openLink(link);
+});
+
 socket.on("custom_error", error => {
     console.log(error);
 })

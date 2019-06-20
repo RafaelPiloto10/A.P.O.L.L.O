@@ -152,5 +152,21 @@ class TextAnalysis {
             } else Apollo.speak("Could not parse your reminder").then(() => Apollo.ListenAndParse());
 
         }
+
+        if (transcript.includes("translate")) {
+            let pattern = /translate (?<tokens>[a-z].+) (to|in) (?<language>[a-z]*)/;
+            let match = transcript.match(pattern);
+            try {
+                let {
+                    tokens,
+                    language
+                } = match.groups;
+
+                socket.emit("get_translation", tokens, language);
+
+            } catch (error) {
+                Apollo.speak("Could not parse your translation.").then(() => Apollo.ListenAndParse());
+            }
+        }
     }
 }

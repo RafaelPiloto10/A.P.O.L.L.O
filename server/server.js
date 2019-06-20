@@ -16,7 +16,8 @@ const {
     searchYoutube,
     searchGoogle,
     searchGoogleMaps,
-    setGoogleTimer
+    setGoogleTimer,
+    searchGoogleTranslate
 } = require("./api_scripts/google");
 
 const {
@@ -238,7 +239,10 @@ io.sockets.on('connection', (socket) => {
         }
     });
 
-
+    socket.on("get_translation", (tokens, language) => {
+        let link = searchGoogleTranslate(tokens, language);
+        socket.emit("translation_link", link);
+    });
 
     socket.on('disconnect', () => {
         console.log("New socket disconnected: " + socket.id)
