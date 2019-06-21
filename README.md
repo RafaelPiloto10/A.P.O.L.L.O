@@ -52,4 +52,5 @@ Coming Soon!
 * [X] Implement [Reminder](https://bunkat.github.io/later/index.html) functionality (+10 seconds only)
 * [X] Implement [Google Translate Search](https://developers.google.com/admin-sdk/directory/v1/languages)
 * [ ] Implement Spotify Mood Player
+* [ ] Implemenet [DialogFlow](https://dialogflow.com/) for better language processing
 * [More ideas for future implementation](https://fossbytes.com/useful-google-assistant-voice-commands/)

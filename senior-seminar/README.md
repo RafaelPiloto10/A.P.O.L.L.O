@@ -6,7 +6,7 @@ My journal enteries and screenshots for Senior Seminar
 - [First Login Page](screenshots/FirstLoginPage.png)
 - [First Dashboard Page](screenshots/FirstDashBoardPage.png)
 - [Speaking bug](screenshots/WomenSpeakingBug.png)
-- [Project Tree on June 8th, 2019](screenshots/06_18_19_tree.png)
+- [Project Tree on June 18th, 2019](screenshots/06_18_19_tree.png)
 
 # Journal Entries
  - [June 3rd, 2019](journal/06_03_19.md)
