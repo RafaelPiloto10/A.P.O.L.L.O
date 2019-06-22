@@ -51,6 +51,7 @@ Coming Soon!
 * [x] Implement Timer functionality
 * [X] Implement [Reminder](https://bunkat.github.io/later/index.html) functionality (+10 seconds only)
 * [X] Implement [Google Translate Search](https://developers.google.com/admin-sdk/directory/v1/languages)
+* [X] Implemenet [DialogFlow](https://dialogflow.com/) for better language processing (hard to implement with Node JS)
+* [ ] Implement [Wit.ai](https://wit.ai/docs/quickstart) for easier language processing integration
 * [ ] Implement Spotify Mood Player
-* [ ] Implemenet [DialogFlow](https://dialogflow.com/) for better language processing
 * [More ideas for future implementation](https://fossbytes.com/useful-google-assistant-voice-commands/)

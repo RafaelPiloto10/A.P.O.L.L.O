@@ -10,9 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dialogflow": "^0.10.1",
     "dotenv": "^8.0.0",
     "googleapis": "^40.0.0",
     "node-spotify-api": "^1.1.1",
-    "spotify-web-api-node": "^4.0.0"
+    "node-wit": "^5.0.0",
+    "spotify-web-api-node": "^4.0.0",
+    "uuid": "^3.3.2"
   }
 }
