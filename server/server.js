@@ -9,6 +9,15 @@ const port = process.env.PORT || 3000;
 require('dotenv').config();
 
 const {
+    Wit,
+    log
+} = require('node-wit');
+
+const {
+    handleCommand
+} = require("./TextAnalysis");
+
+const {
     wikiSearch
 } = require("./api_scripts/wiki");
 
@@ -32,6 +41,7 @@ const {
 } = require("./api_scripts/email");
 
 const later = require('later');
+
 
 // run server
 const route = app.listen(port, () => {
@@ -147,15 +157,20 @@ app.get("*", (req, res, next) => {
     });
 });
 
+const client = new Wit({
+    accessToken: process.env.WITAITOKEN,
+    logger: new log.Logger(log.DEBUG) // optional
+});
+
 io.sockets.on('connection', (socket) => {
     console.log("New socket connection: " + socket.id);
 
     socket.on("youtube_Search", async (topic) => {
         // console.log("Client:", socket.id, "is searching youtube for:", topic);
         // console.log("Youtube Key:", process.env.YOUTUBEKEY);
-        await searchYoutube(process.env.GOOGLEKEY, topic).then(data => {
+        await searchYoutube(topic).then(link => {
             // console.log("Got results:", data[0]);
-            socket.emit("youtube_Search_Results", data[0].id.videoId);
+            socket.emit("youtube_Search_Results", link);
         });
     });
 
@@ -242,6 +257,20 @@ io.sockets.on('connection', (socket) => {
     socket.on("get_translation", (tokens, language) => {
         let link = searchGoogleTranslate(tokens, language);
         socket.emit("translation_link", link);
+    });
+
+    socket.on('nlp-parse', async (transcript, location) => {
+        let results = await client.message(transcript);
+        handleCommand(results, {
+            location,
+            reminder_callback: function (reminder) {
+                socket.emit("reminder_met", reminder);
+            },
+            socket_callback: function (broadcast_title, data) {
+                console.log("Running NLP Socket callback to:", broadcast_title);
+                socket.emit(broadcast_title, data);
+            }
+        });
     });
 
     socket.on('disconnect', () => {

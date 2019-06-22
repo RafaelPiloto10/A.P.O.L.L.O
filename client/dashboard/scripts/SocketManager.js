@@ -4,8 +4,8 @@ socket.on('connect', () => {
     console.log("uid: " + socket.io.engine.id);
 });
 
-socket.on('youtube_Search_Results', (id) => {
-    openLink(`https://www.youtube.com/watch?v=${id}`)
+socket.on('youtube_Search_Results', (link) => {
+    openLink(link)
 });
 
 socket.on('wikipedia_Search_Results', link => {
@@ -63,7 +63,7 @@ socket.on("reminder_met", reason => {
         }, 2000);
     }
 
-    Apollo.speak("Time " + reason);
+    Apollo.speak("Time to " + reason);
 });
 
 socket.on("translation_link", link => {

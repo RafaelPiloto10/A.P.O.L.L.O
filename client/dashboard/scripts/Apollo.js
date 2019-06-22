@@ -134,7 +134,7 @@ class Apollo {
     static ListenAndParse() {
         Apollo.shouldBeListening = true;
         Apollo.listen().then(results => {
-            TextAnalysis.parseCommand(results);
+            TextAnalysis.commandNLP(results);
         });
     }
 }

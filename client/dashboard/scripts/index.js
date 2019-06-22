@@ -28,9 +28,7 @@ function setup() {
 function keyPressed() {
     if (keyCode == UP_ARROW) {
         Apollo.shouldBeListening = true;
-        Apollo.listen().then(results => {
-            TextAnalysis.parseCommand(results);
-        });
+        Apollo.ListenAndParse();
     }
     if (keyCode == DOWN_ARROW) {
         recognition.stop();

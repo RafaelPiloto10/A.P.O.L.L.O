@@ -4,13 +4,14 @@ const {
 
 const fs = require('fs');
 
+require('dotenv').config();
+
 const GoogleURL = "https://google.com/search?q=";
 
-async function searchYoutube(key, topic) {
-    console.log("YoutubeKey:", key);
+async function searchYoutube(topic) {
     let YouTubeAPI = google.youtube({ // Authenticate Youtube API
         version: 'v3',
-        auth: key
+        auth: process.env.GOOGLEKEY
     });
 
     return await YouTubeAPI.search.list({
@@ -18,7 +19,7 @@ async function searchYoutube(key, topic) {
         q: topic
     }).then((videos) => {
         console.log("Sending youtube query results!");
-        return videos.data.items;
+        return `https://www.youtube.com/watch?v=${videos.data.items[0].id.videoId}`;
     }).catch((error) => {
         console.log(error);
         return error;

@@ -1,5 +1,12 @@
 class TextAnalysis {
 
+    static commandNLP(t) {
+        Promise.resolve(t).then(transcript => {
+            transcript = transcript.toLowerCase();
+            socket.emit('nlp-parse', transcript, currentLocation);
+        });
+    }
+
     static parseCommand(t) {
         // Wait until the listening promise has been resolved
         Promise.resolve(t).then(function (transcript) {
