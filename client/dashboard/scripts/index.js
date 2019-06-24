@@ -1,6 +1,12 @@
-let server = "http://localhost:3000";
+let server = "http://192.168.1.243:3000";
+
 window.onload = () => {
+    if (!'SpeechRecognition' in window) {
+        window.location.replace("/unsupported");
+    }
+
     fetch(server + "/auth").then(response => response.json()).then(response => {
+
         if (!response.authenticated) {
             window.location.replace("/login");
         } else {
@@ -18,7 +24,6 @@ window.onload = () => {
     });
 
     Apollo.speak(""); // Buffer speak to get rid of female voice
-
 }
 
 function setup() {

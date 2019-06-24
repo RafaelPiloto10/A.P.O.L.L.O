@@ -54,4 +54,6 @@ Coming Soon!
 * [X] Implemenet [DialogFlow](https://dialogflow.com/) for better language processing (hard to implement with Node JS)
 * [ ] Implement [Wit.ai](https://wit.ai/docs/quickstart) for easier language processing integration
 * [ ] Implement Spotify Mood Player
+  * `chrome://flags/#unsafely-treat-insecure-origin-as-secure`
 * [More ideas for future implementation](https://fossbytes.com/useful-google-assistant-voice-commands/)
+* Discovered solution to Google Security Policy preventing device access ie Microphone & location [Solution](https://medium.com/@Carmichaelize/enabling-the-microphone-camera-in-chrome-for-local-unsecure-origins-9c90c3149339)

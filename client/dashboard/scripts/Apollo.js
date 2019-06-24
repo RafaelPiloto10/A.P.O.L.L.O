@@ -61,8 +61,7 @@ class Apollo {
             let stopTimeout;
             if (!Apollo.isListening && !Apollo.shouldBeListening) {
                 console.warn("listen() called but shouldBeListening = false");
-            }
-            if (!Apollo.isListening && Apollo.shouldBeListening) {
+            } else if (!Apollo.isListening && Apollo.shouldBeListening) {
                 let listenLoop = setInterval(() => {
                     if (Apollo.isListening) clearInterval(listenLoop);
                     try {

@@ -150,6 +150,10 @@ app.get('/logout', (req, res) => {
     }
 });
 
+app.get('/unsupported', (req, res) => {
+    res.status(200).send("unsupported/");
+});
+
 // route for 404 error
 app.get("*", (req, res, next) => {
     res.status(404).json({
