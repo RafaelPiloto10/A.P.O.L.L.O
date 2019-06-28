@@ -2,7 +2,9 @@ class Apollo {
     static isListening = false;
     static shouldBeListening = false;
 
-    static agreementResponses = ["As you wish", "Yes sir", "What ever you say", "Right away"];
+    static greetResponses = ["Hello there!", "How may I help?", "What can I do for you?"];
+    static retryResponse = ["I'm sorry I didn't get that", "What was that?", "Could you repeat that?", "Come again?", "I didn't understand, try again."];
+    static agreementResponses = ["As you wish", "Yes, right away", "What ever you say", "Right away"];
     static confirmPrompts = ["Is this correct?", "Does this seem right?", "Did I get that correct?"];
     static toPrompts = ["Who shall I send it to?", "Who shall I send the email to?", "Who are we sending it to?"];
     static subjectPrompts = ["What shall the subject be?", "What is the subject?", "What should I set the subject to be?"];

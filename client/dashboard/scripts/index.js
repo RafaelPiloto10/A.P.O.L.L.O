@@ -1,7 +1,7 @@
-let server = "http://192.168.1.243:3000";
+let server = location.hostname == "localhost" || location.hostname == "127.0.0.1" ? "http://localhost:3000" : "http://192.168.1.243:3000";
 
 window.onload = () => {
-    if (!'SpeechRecognition' in window) {
+    if (!('SpeechRecognition' in window)) {
         window.location.replace("/unsupported");
     }
 
@@ -9,18 +9,21 @@ window.onload = () => {
 
         if (!response.authenticated) {
             window.location.replace("/login");
+            console.error("Could not authenticate with server");
+
         } else {
             fetch("https://ipapi.co/json")
                 .then(results => results.json())
                 .then(results => socket.emit("new_user_info", results))
                 .catch(() => {
                     window.location.replace("/login");
-                    alert("Error: Could not authenticate IP");
+                    console.error("Error: Could not authenticate IP");
                 });
         }
-    }).catch(() => {
+    }).catch((err) => {
+        console.log(err);
         window.location.replace("/login");
-        alert("Error: Could not authenticate with server");
+        console.error("Error: There was an error trying to authenticate with server");
     });
 
     Apollo.speak(""); // Buffer speak to get rid of female voice

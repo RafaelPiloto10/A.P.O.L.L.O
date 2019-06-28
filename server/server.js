@@ -51,6 +51,7 @@ const route = app.listen(port, () => {
 const io = require('socket.io')(route);
 
 // Use middleweare
+app.use(cors());
 app.use(express.json());
 app.use(bodyparser.json());
 app.use(cookieparser());
@@ -70,7 +71,9 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        expires: 600000
+        expires: 600000,
+        secure: false,
+        httpOnly: false
     }
 }));
 
@@ -101,7 +104,7 @@ app.get("/", (req, res, next) => {
 
 // route to check if user is authenticated
 app.get("/auth", (req, res, next) => {
-    if (req.session.user == 'authenticated') {
+    if (req.session.user == "authenticated") {
         res.status(200).json({
             authenticated: true
         });
@@ -120,7 +123,9 @@ app
     .post("/login", sessionChecker, (req, res, next) => {
         if (typeof req.body.username != 'undefined' && typeof req.body.password != 'undefined') {
             // Check database here for password and username in order to properly authenticate
+
             req.session.user = "authenticated";
+            console.log(req.session);
             res.status(200).redirect('/dashboard');
 
         } else {
@@ -264,17 +269,21 @@ io.sockets.on('connection', (socket) => {
     });
 
     socket.on('nlp-parse', async (transcript, location) => {
-        let results = await client.message(transcript);
-        handleCommand(results, {
-            location,
-            reminder_callback: function (reminder) {
-                socket.emit("reminder_met", reminder);
-            },
-            socket_callback: function (broadcast_title, data) {
-                console.log("Running NLP Socket callback to:", broadcast_title);
-                socket.emit(broadcast_title, data);
-            }
-        });
+        if (transcript.length > 1) {
+            let results = await client.message(transcript);
+            handleCommand(results, {
+                location,
+                reminder_callback: function (reminder) {
+                    socket.emit("reminder_met", reminder);
+                },
+                socket_callback: function (broadcast_title, data) {
+                    console.log("Running NLP Socket callback to:", broadcast_title);
+                    socket.emit(broadcast_title, data);
+                }
+            });
+        } else {
+            socket.emit("retry_intent");
+        }
     });
 
     socket.on('disconnect', () => {

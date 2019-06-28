@@ -39,7 +39,12 @@ async function handleCommand(witResults, args) { // client_location, reminder_ca
     let location = witResults.entities.location ? witResults.entities.location[0].value : undefined;
     let reminder = witResults.entities.reminder ? witResults.entities.reminder[0].value : undefined;
     let datetime = witResults.entities.datetime ? new Date(witResults.entities.datetime[0].from.value) : undefined;
-    let time_key = transcript.match(/(after | before | on | every | at | of | in)/)[0];
+    // NEEDS FURTHER TESTING - AFTER CURRENTLY WORKS
+    let time_key
+
+    try {
+        time_key = transcript.match(/(after | before | on | every | at | of | in)/)[0];
+    } catch {}
 
     console.log("Platform:", platform || "NONE");
     console.log("Command:", command || "NONE");
@@ -49,7 +54,11 @@ async function handleCommand(witResults, args) { // client_location, reminder_ca
     console.log("Reminder:", reminder || "NONE");
     console.log("Date time:", datetime || "NONE");
 
-    if (platform == "google" && search_query) {
+    if (command == undefined && platform == undefined) {
+        // This is a greeting intent
+        args.socket_callback("greet_intent");
+
+    } else if (platform == "google" && search_query) {
         // This is a google search
         let link = searchGoogle(search_query);
         args.socket_callback("google_Search_Results", link);
@@ -125,7 +134,7 @@ async function handleCommand(witResults, args) { // client_location, reminder_ca
         // send email
         args.socket_callback("begin_send_email");
     } else {
-        console.log("No Match!");
+        args.socket_callback("retry_intent");
     }
 
 }

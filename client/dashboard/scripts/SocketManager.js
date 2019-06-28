@@ -4,6 +4,10 @@ socket.on('connect', () => {
     console.log("uid: " + socket.io.engine.id);
 });
 
+socket.on('greet_intent', () => {
+    Apollo.speak(Apollo.randomResponse(Apollo.greetResponses)).then(Apollo.ListenAndParse());
+});
+
 socket.on('youtube_Search_Results', (link) => {
     openLink(link)
 });
@@ -19,8 +23,7 @@ socket.on('google_Search_Results', link => {
 socket.on("weather_current", weather => {
     let currentWeather = weather.weather[0];
 
-    Apollo.speak(Apollo.randomResponse(Apollo.agreementResponses) +
-        ". The weather appears to be: " + currentWeather.description +
+    Apollo.speak("The weather appears to be: " + currentWeather.description +
         " with a low of " + Math.floor(weather.main.temp_min) +
         " and a high of " + Math.floor(weather.main.temp_max) +
         ". Wind is traveling " + Math.floor(weather.wind.speed) +
@@ -31,7 +34,7 @@ socket.on("weather_current", weather => {
 
 socket.on("weather_forecast", weather => {
     let message = getForecastMessage(weather);
-    Apollo.speak(Apollo.randomResponse(Apollo.agreementResponses) + ". " + message[0][0])
+    Apollo.speak(message[0][0])
         .then(Apollo.speak(message[1][0]))
         .then(Apollo.speak(message[2][0]))
         .then(() => {
@@ -68,6 +71,15 @@ socket.on("reminder_met", reason => {
 
 socket.on("translation_link", link => {
     openLink(link);
+});
+
+socket.on("retry_intent", () => {
+    Apollo.speak(Apollo.randomResponse(Apollo.retryResponse)).then(Apollo.ListenAndParse());
+});
+
+socket.on("begin_send_email", async () => {
+    let email = await sendEmail();
+    socket.emit("send_email", email);
 });
 
 socket.on("custom_error", error => {
