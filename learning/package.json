@@ -12,9 +12,11 @@
   "dependencies": {
     "dialogflow": "^0.10.1",
     "dotenv": "^8.0.0",
+    "emotional": "0.0.3",
     "googleapis": "^40.0.0",
     "node-spotify-api": "^1.1.1",
     "node-wit": "^5.0.0",
+    "sentiment": "^5.0.1",
     "spotify-web-api-node": "^4.0.0",
     "uuid": "^3.3.2"
   }
