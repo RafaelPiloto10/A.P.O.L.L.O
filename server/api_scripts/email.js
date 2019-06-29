@@ -22,7 +22,7 @@ function sendEmail(to, subject, text) {
     let status = {};
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
-            console.log(error);
+            console.log("Error while trying to send email:", error);
             status['code'] = 554 // This means that the transaction has failed. It’s a permanent error and the server will not try to send the message again.
             status['error'] = error;
         } else {
