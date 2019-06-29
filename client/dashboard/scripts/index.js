@@ -1,4 +1,4 @@
-let server = location.hostname == "localhost" || location.hostname == "127.0.0.1" ? "http://localhost:3000" : "http://192.168.1.243:3000";
+let server = location.hostname == "localhost" || location.hostname == "127.0.0.1" ? "http://localhost:3000" : "https://apollo-assistant.herokuapp.com/";
 
 window.onload = () => {
     if (!('SpeechRecognition' in window)) {
