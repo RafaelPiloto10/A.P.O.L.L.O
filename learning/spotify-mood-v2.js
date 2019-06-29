@@ -13,7 +13,11 @@ let best_song_error = {
     danceability: 1,
     energy: 1,
     loudness: -60,
-    valence: 1
+    valence: 1,
+    dance_error: 1,
+    energy_error: 1,
+    valence_error: 1
+
 }
 
 let suggested_songs = {
@@ -195,7 +199,7 @@ emotional.load(() => {
             let loudness_error = Math.abs(loudness - target_song.loudness) / target_song.loudness;
             let valence_error = Math.abs(valence - target_song.valence) / target_song.valence;
 
-            if (dance_error < .3 && energy_error < .25 && valence_error < .20) {
+            if (dance_error < best_song_error.dance_error && energy_error < best_song_error.energy_error && valence_error < best_song_error.valence_error) {
                 best_song_error = {
                     danceability,
                     energy,
