@@ -40,6 +40,10 @@ const {
     sendEmail
 } = require("./api_scripts/email");
 
+const {
+    getSongFromMood
+} = require("./api_scripts/custom-spotify");
+
 const later = require('later');
 
 
@@ -121,9 +125,8 @@ app
         res.send(200).send("login/");
     })
     .post("/login", sessionChecker, (req, res, next) => {
-        if (typeof req.body.username != 'undefined' && typeof req.body.password != 'undefined') {
+        if (typeof req.body.username != 'undefined' && typeof req.body.password != 'undefined' && req.body.username == process.env.USERNAME && req.body.password == process.env.PASSWORD) {
             // Check database here for password and username in order to properly authenticate
-
             req.session.user = "authenticated";
             console.log(req.session);
             res.status(200).redirect('/dashboard');
@@ -266,6 +269,11 @@ io.sockets.on('connection', (socket) => {
     socket.on("get_translation", (tokens, language) => {
         let link = searchGoogleTranslate(tokens, language);
         socket.emit("translation_link", link);
+    });
+
+    socket.on("spotify-recommender-sentence", async sentence => {
+        let results = await getSongFromMood(sentence);
+        socket.emit("song-recommendation", results);
     });
 
     socket.on('nlp-parse', async (transcript, location) => {

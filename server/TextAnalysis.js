@@ -18,6 +18,10 @@ const {
 } = require("./api_scripts/owm");
 
 const {
+    getLikeSong
+} = require('./api_scripts/custom-spotify');
+
+const {
     sendEmail
 } = require("./api_scripts/email");
 
@@ -39,8 +43,9 @@ async function handleCommand(witResults, args) { // client_location, reminder_ca
     let location = witResults.entities.location ? witResults.entities.location[0].value : undefined;
     let reminder = witResults.entities.reminder ? witResults.entities.reminder[0].value : undefined;
     let datetime = witResults.entities.datetime ? new Date(witResults.entities.datetime[0].from.value) : undefined;
+
     // NEEDS FURTHER TESTING - AFTER CURRENTLY WORKS
-    let time_key
+    let time_key;
 
     try {
         time_key = transcript.match(/(after | before | on | every | at | of | in)/)[0];
@@ -56,8 +61,16 @@ async function handleCommand(witResults, args) { // client_location, reminder_ca
 
     if (command == undefined && platform == undefined) {
         // This is a greeting intent
-        args.socket_callback("greet_intent");
+        args.socket_callback("greet_intent", );
 
+    } else if (command == "recommend") {
+        // This is a spotify recommendation search
+        if (!search_query || search_query == 'song') {
+            args.socket_callback("spotify-recommender-intent")
+        } else {
+            let results = await getLikeSong(search_query);
+            args.socket_callback("song-recommendation", results);
+        }
     } else if (platform == "google" && search_query) {
         // This is a google search
         let link = searchGoogle(search_query);
@@ -70,6 +83,11 @@ async function handleCommand(witResults, args) { // client_location, reminder_ca
 
     } else if (platform == "youtube" && search_query) {
         // This is a youtube search
+        let link = await searchYoutube(search_query).catch(err => console.error(err));
+        args.socket_callback("youtube_Search_Results", link);
+
+    } else if (command == "play" && (search_query)) {
+        // This is a shortcut to playing something on youtube
         let link = await searchYoutube(search_query).catch(err => console.error(err));
         args.socket_callback("youtube_Search_Results", link);
 

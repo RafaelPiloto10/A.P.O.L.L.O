@@ -82,6 +82,17 @@ socket.on("begin_send_email", async () => {
     socket.emit("send_email", email);
 });
 
+socket.on("spotify-recommender-intent", async () => {
+    Apollo.shouldBeListening = true;
+    await Apollo.speak("Say a sentence that describes your current mood.");
+    let sentence = await Apollo.listen();
+    socket.emit('spotify-recommender-sentence', sentence);
+});
+
+socket.on("song-recommendation", songs => {
+    console.log(songs);
+});
+
 socket.on("custom_error", error => {
     console.log(error);
 })
