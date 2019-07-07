@@ -18,6 +18,7 @@
     "node-wit": "^5.0.0",
     "sentiment": "^5.0.1",
     "spotify-web-api-node": "^4.0.0",
+    "tensorflow": "^0.7.0",
     "uuid": "^3.3.2"
   }
 }
