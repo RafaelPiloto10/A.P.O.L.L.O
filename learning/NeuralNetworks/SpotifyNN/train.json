@@ -1,0 +1,382 @@
+[{
+        "song_features": {
+            "danceability": 0.557,
+            "energy": 0.54,
+            "valence": 0.394,
+            "tempo": 129.171,
+            "loudness": -10.484,
+            "instrumentalness": 0.00248,
+            "speechiness": 0.0347,
+            "acousticness": 0.0339,
+            "liveness": 0.179,
+            "mode": 1,
+            "key": 9
+        },
+        "song": {
+            "name": "Here Comes The Sun - Remastered 2009",
+            "id": "6dGnYIeXmHdcikdzNNDMm2",
+            "artists": [{
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/3WrFJ7ztbogyGnTHbHJFl2"
+                },
+                "href": "https://api.spotify.com/v1/artists/3WrFJ7ztbogyGnTHbHJFl2",
+                "id": "3WrFJ7ztbogyGnTHbHJFl2",
+                "name": "The Beatles",
+                "type": "artist",
+                "uri": "spotify:artist:3WrFJ7ztbogyGnTHbHJFl2"
+            }],
+            "popularity": 82
+        },
+        "sentiment": {
+            "polarity": 0.25,
+            "subjectivity": 1,
+            "assessments": [
+                [
+                    [
+                        "pretty"
+                    ],
+                    0.25,
+                    1,
+                    null
+                ]
+            ]
+        }
+    }, {
+        "song_features": {
+            "danceability": 0.672,
+            "energy": 0.642,
+            "valence": 0.656,
+            "tempo": 123.984,
+            "loudness": -4.552,
+            "instrumentalness": 0,
+            "speechiness": 0.0461,
+            "acousticness": 0.127,
+            "liveness": 0.137,
+            "mode": 1,
+            "key": 5
+        },
+        "song": {
+            "name": "Weak",
+            "id": "45iMRHmfLZu3yjdZ8P5e3t",
+            "artists": [{
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/6s22t5Y3prQHyaHWUN1R1C"
+                },
+                "href": "https://api.spotify.com/v1/artists/6s22t5Y3prQHyaHWUN1R1C",
+                "id": "6s22t5Y3prQHyaHWUN1R1C",
+                "name": "AJR",
+                "type": "artist",
+                "uri": "spotify:artist:6s22t5Y3prQHyaHWUN1R1C"
+            }],
+            "popularity": 66
+        },
+        "sentiment": {
+            "polarity": 0.7,
+            "subjectivity": 0.6000000000000001,
+            "assessments": [
+                [
+                    [
+                        "good"
+                    ],
+                    0.7,
+                    0.6000000000000001,
+                    null
+                ]
+            ]
+        }
+    }, {
+        "song_features": {
+            "danceability": 0.717,
+            "energy": 0.653,
+            "valence": 0.412,
+            "tempo": 106.966,
+            "loudness": -5.634,
+            "instrumentalness": 0,
+            "speechiness": 0.0658,
+            "acousticness": 0.229,
+            "liveness": 0.101,
+            "mode": 1,
+            "key": 1
+        },
+        "song": {
+            "name": "thank u, next",
+            "id": "3e9HZxeyfWwjeyPAMmWSSQ",
+            "artists": [{
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/66CXWjxzNUsdJxJ2JdwvnR"
+                },
+                "href": "https://api.spotify.com/v1/artists/66CXWjxzNUsdJxJ2JdwvnR",
+                "id": "66CXWjxzNUsdJxJ2JdwvnR",
+                "name": "Ariana Grande",
+                "type": "artist",
+                "uri": "spotify:artist:66CXWjxzNUsdJxJ2JdwvnR"
+            }],
+            "popularity": 89
+        },
+        "sentiment": {
+            "polarity": 0.875,
+            "subjectivity": 0.6000000000000001,
+            "assessments": [
+                [
+                    [
+                        "good",
+                        "!"
+                    ],
+                    0.875,
+                    0.6000000000000001,
+                    null
+                ]
+            ]
+        }
+    }, {
+        "song_features": {
+            "danceability": 0.751,
+            "energy": 0.726,
+            "valence": 0.581,
+            "tempo": 104.914,
+            "loudness": -3.499,
+            "instrumentalness": 0.00000342,
+            "speechiness": 0.038,
+            "acousticness": 0.0706,
+            "liveness": 0.278,
+            "mode": 0,
+            "key": 8
+        },
+        "song": {
+            "name": "Snapping",
+            "id": "7JCi89HGiURxFpr6NITY7q",
+            "artists": [{
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/2PSJ6YriU7JsFucxACpU7Y"
+                },
+                "href": "https://api.spotify.com/v1/artists/2PSJ6YriU7JsFucxACpU7Y",
+                "id": "2PSJ6YriU7JsFucxACpU7Y",
+                "name": "CHUNG HA",
+                "type": "artist",
+                "uri": "spotify:artist:2PSJ6YriU7JsFucxACpU7Y"
+            }],
+            "popularity": 73
+        },
+        "sentiment": {
+            "polarity": 0.875,
+            "subjectivity": 0.6000000000000001,
+            "assessments": [
+                [
+                    [
+                        "good",
+                        "!"
+                    ],
+                    0.875,
+                    0.6000000000000001,
+                    null
+                ]
+            ]
+        }
+    }, {
+        "song_features": {
+            "danceability": 0.701,
+            "energy": 0.425,
+            "valence": 0.562,
+            "tempo": 135.128,
+            "loudness": -10.965,
+            "instrumentalness": 0.13,
+            "speechiness": 0.375,
+            "acousticness": 0.328,
+            "liveness": 0.1,
+            "mode": 1,
+            "key": 7
+        },
+        "song": {
+            "name": "bad guy",
+            "id": "2Fxmhks0bxGSBdJ92vM42m",
+            "artists": [{
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/6qqNVTkY8uBg9cP3Jd7DAH"
+                },
+                "href": "https://api.spotify.com/v1/artists/6qqNVTkY8uBg9cP3Jd7DAH",
+                "id": "6qqNVTkY8uBg9cP3Jd7DAH",
+                "name": "Billie Eilish",
+                "type": "artist",
+                "uri": "spotify:artist:6qqNVTkY8uBg9cP3Jd7DAH"
+            }],
+            "popularity": 99
+        },
+        "sentiment": {
+            "polarity": 0.875,
+            "subjectivity": 0.6000000000000001,
+            "assessments": [
+                [
+                    [
+                        "good",
+                        "!"
+                    ],
+                    0.875,
+                    0.6000000000000001,
+                    null
+                ]
+            ]
+        }
+    }, {
+        "song_features": {
+            "danceability": 0.585,
+            "energy": 0.597,
+            "valence": 0.227,
+            "tempo": 100.051,
+            "loudness": -7.499,
+            "instrumentalness": 0.0404,
+            "speechiness": 0.037,
+            "acousticness": 0.339,
+            "liveness": 0.195,
+            "mode": 1,
+            "key": 0
+        },
+        "song": {
+            "name": "Reborn",
+            "id": "4RVbK6cV0VqWdpCDcx3hiT",
+            "artists": [{
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/2hPgGN4uhvXAxiXQBIXOmE"
+                },
+                "href": "https://api.spotify.com/v1/artists/2hPgGN4uhvXAxiXQBIXOmE",
+                "id": "2hPgGN4uhvXAxiXQBIXOmE",
+                "name": "KIDS SEE GHOSTS",
+                "type": "artist",
+                "uri": "spotify:artist:2hPgGN4uhvXAxiXQBIXOmE"
+            }],
+            "popularity": 74
+        },
+        "sentiment": {
+            "polarity": 0.25,
+            "subjectivity": 1,
+            "assessments": [
+                [
+                    [
+                        "pretty"
+                    ],
+                    0.25,
+                    1,
+                    null
+                ]
+            ]
+        }
+    }, {
+        "song_features": {
+            "danceability": 0.558,
+            "energy": 0.559,
+            "valence": 0.62,
+            "tempo": 78.558,
+            "loudness": -9.222,
+            "instrumentalness": 0.00000749,
+            "speechiness": 0.0959,
+            "acousticness": 0.371,
+            "liveness": 0.109,
+            "mode": 1,
+            "key": 6
+        },
+        "song": {
+            "name": "See You Again",
+            "id": "7KA4W4McWYRpgf0fWsJZWB",
+            "artists": [{
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/4V8LLVI7PbaPR0K2TGSxFF"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/4V8LLVI7PbaPR0K2TGSxFF",
+                    "id": "4V8LLVI7PbaPR0K2TGSxFF",
+                    "name": "Tyler, The Creator",
+                    "type": "artist",
+                    "uri": "spotify:artist:4V8LLVI7PbaPR0K2TGSxFF"
+                },
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/1U1el3k54VvEUzo3ybLPlM"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/1U1el3k54VvEUzo3ybLPlM",
+                    "id": "1U1el3k54VvEUzo3ybLPlM",
+                    "name": "Kali Uchis",
+                    "type": "artist",
+                    "uri": "spotify:artist:1U1el3k54VvEUzo3ybLPlM"
+                }
+            ],
+            "popularity": 77
+        },
+        "sentiment": {
+            "polarity": 0.25,
+            "subjectivity": 1,
+            "assessments": [
+                [
+                    [
+                        "pretty"
+                    ],
+                    0.25,
+                    1,
+                    null
+                ]
+            ]
+        }
+    },
+    {
+        "song_features": {
+            "danceability": 0.886,
+            "energy": 0.427,
+            "valence": 0.23,
+            "tempo": 108.034,
+            "loudness": -10.028,
+            "instrumentalness": 0.00099,
+            "speechiness": 0.145,
+            "acousticness": 0.0312,
+            "liveness": 0.0906,
+            "mode": 1,
+            "key": 6
+        },
+        "song": {
+            "name": "Chill Bill",
+            "id": "5uDASfU19gDxSjW8cnCaBp",
+            "artists": [{
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/2hWs22BmQkK4czFtDLnar2"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/2hWs22BmQkK4czFtDLnar2",
+                    "id": "2hWs22BmQkK4czFtDLnar2",
+                    "name": "Rob $tone",
+                    "type": "artist",
+                    "uri": "spotify:artist:2hWs22BmQkK4czFtDLnar2"
+                },
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/1rs3y69kDwkIdGJcOYngQt"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/1rs3y69kDwkIdGJcOYngQt",
+                    "id": "1rs3y69kDwkIdGJcOYngQt",
+                    "name": "J. Davi$",
+                    "type": "artist",
+                    "uri": "spotify:artist:1rs3y69kDwkIdGJcOYngQt"
+                },
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/3e2jFFSyQ3RQDSi1YI543i"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/3e2jFFSyQ3RQDSi1YI543i",
+                    "id": "3e2jFFSyQ3RQDSi1YI543i",
+                    "name": "Spooks",
+                    "type": "artist",
+                    "uri": "spotify:artist:3e2jFFSyQ3RQDSi1YI543i"
+                }
+            ],
+            "popularity": 77
+        },
+        "sentiment": {
+            "polarity": -0.5,
+            "subjectivity": 0.9,
+            "assessments": [
+                [
+                    [
+                        "chilling"
+                    ],
+                    -0.5,
+                    0.9,
+                    null
+                ]
+            ]
+        }
+    }
+]
