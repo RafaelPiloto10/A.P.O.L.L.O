@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 
-const file = fs.readFileSync("./train.json");
+const file = fs.readFileSync("./assets/lyrics-clean.json");
 const data = JSON.parse(file);
 
 app.use(express.static("./public/"));
