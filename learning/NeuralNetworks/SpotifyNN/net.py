@@ -2,6 +2,8 @@ import tensorflow as tf
 import json
 import os
 import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
 
 def input_fn():
@@ -52,6 +54,7 @@ subjectivity = tf.feature_column.numeric_column('subjectivity')
 
 estimator = tf.estimator.LinearRegressor(
     feature_columns=[polarity, subjectivity],
+    model_dir="./output"
 )
 
 estimator.train(input_fn=train_input_fn, steps=2500)
@@ -65,3 +68,16 @@ for input, p in zip(danceability_data[::-1], predictions):
     v = p["predictions"][0]
     print(
         f"Actual Danceability = {input:.2f} -> Predicted = {v:.2f} : Error={abs((v - input)/input*100):.2f}%")
+
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+xs, ys = pol_data, sub_data
+ax.plot_trisurf(xs, ys, danceability_data)
+
+ax.set_xlabel('Polarity')
+ax.set_ylabel('Subjectivity')
+ax.set_zlabel('Danceability')
+
+plt.show()
