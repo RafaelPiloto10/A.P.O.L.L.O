@@ -9,6 +9,8 @@ My journal enteries and screenshots for Senior Seminar
 - [First Dashboard Page](screenshots/FirstDashBoardPage.png)
 - [Speaking bug](screenshots/WomenSpeakingBug.png)
 - [Project Tree on June 18th, 2019](screenshots/06_18_19_tree.png)
+- [Start of Natrual Language Processing Model](screenshots/NLP.png)
+- [Spotify Neural Network Data](screenshots/SpotifyData.png)
 
 ## Journal Entries
 
@@ -30,3 +32,5 @@ My journal enteries and screenshots for Senior Seminar
 - [June 22th, 2019](journal/06_22_19.md)
 - [June 25th, 2019](journal/06_25_19.md)
 - [June 27th, 2019](journal/06_27_19.md)
+- [June 28th, 2019](journal/06_27_19.md)
+- [July 1st to 16th, 2019](journal/07_01-16_19.md)

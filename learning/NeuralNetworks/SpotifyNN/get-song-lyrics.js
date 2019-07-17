@@ -4,7 +4,7 @@ require('dotenv').config();
 
 
 
-let file = fs.readFileSync(__dirname + "/../tracks.json");
+let file = fs.readFileSync(__dirname + "/assets/tracks.json");
 let tracks = JSON.parse(file);
 
 let song_lyrics = [];

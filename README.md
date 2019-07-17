@@ -6,7 +6,7 @@ A Personal Assitant hosted on the browser that can complete various tasks upon r
 
 ## Functionality
 
-Current Trigger words:
+Current Obvious Trigger words:
 
 * `search` (topic) `on` (platform)
 * `find` (topic) `on` (platform)
@@ -19,8 +19,9 @@ Current platforms implemented:
 * Google
 * Wikipedia
 * Google Maps
+* Google Translate
 
-Wild Card Commands include:
+Other commands include:
 
 * Getting the weather / weather forecast for the current location or requested city
 * Request voice recognition to be turned off
@@ -29,6 +30,13 @@ Wild Card Commands include:
 * `Set a timer (time)` - Sets a timer on a different tab
 * `Set a reminder to (reminder) (at/before/after/on/etc) (time)`
   * Order in which the reminder and time are said does not matter
+
+### Spotify Recommender Command
+
+Request a song recommendation using either:
+
+* Sentiment Analysis - Provide a sentence that describes your current mood.
+* Similar Song - Provide a song title that describes your current mood and a similar song will be recommended.
 
 ## Installation
 
@@ -54,7 +62,9 @@ Coming Soon!
 * [X] Implemenet [DialogFlow](https://dialogflow.com/) for better language processing (hard to implement with Node JS)
 * [X] Implement [Wit.ai](https://wit.ai/docs/quickstart) for easier language processing integration
 * [ ] Implement Spotify Mood Player
-  * Built prototype
+  * Built prototype - COMPLETE
+  * Built prototype Neural Network - Need to export model and implement with JS
+* [ ] Build/Improve landing page for Spotify Recommender API
 
 * [More ideas for future implementation](https://fossbytes.com/useful-google-assistant-voice-commands/)
 * Discovered solution to Google Security Policy preventing device access ie Microphone & location [Solution](https://medium.com/@Carmichaelize/enabling-the-microphone-camera-in-chrome-for-local-unsecure-origins-9c90c3149339)
