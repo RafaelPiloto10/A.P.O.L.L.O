@@ -2,8 +2,6 @@ import tensorflow as tf
 import json
 import os
 import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 
 
 def input_fn():
@@ -148,19 +146,3 @@ for d_actual, e_actual, v_actual, d_p, e_p, v_p in zip(danceability_data[::-1], 
 
 
 print(f"Total Estimators Average Error: {total_avg_error/counter:.2f}")
-
-
-def show_plt(x, y, z, x_title="X", y_title="Y", z_title="Z"):
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
-
-    xs, ys = x, y
-    ax.scatter(xs, ys, z)
-
-    ax.set_xlabel(x_title)
-    ax.set_ylabel(y_title)
-    ax.set_zlabel(z_title)
-
-    plt.show()
-
-# show_plt(pol_data, sub_data, danceability_data, "Polarity", "Subjectivity", "Danceability")
