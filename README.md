@@ -2,7 +2,7 @@
 
 ## Description
 
-A Personal Assitant hosted on the browser that can complete various tasks upon request using your voice!
+A Personal Assistant hosted on the browser that can complete various tasks upon request using your voice!
 
 ## Functionality
 
